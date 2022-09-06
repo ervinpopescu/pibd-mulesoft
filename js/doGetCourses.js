@@ -9,4 +9,5 @@ var headers = [
     "ID",
     "Teacher",
     "Title"];
+
 doGet("courses", generateTable, keys, headers);
