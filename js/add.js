@@ -8,8 +8,8 @@ function isEmpty(obj) {
     return JSON.stringify(obj) === JSON.stringify({});
 }
 
-async function patch(id, tablename) {
-    var url = `http://localhost:8081/api/database/${tablename}/${id}`;
+async function post(tablename) {
+    var url = `http://localhost:8081/api/database/${tablename}`;
     const thisForm = document.getElementById('myForm');
     thisForm.addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -20,7 +20,7 @@ async function patch(id, tablename) {
                 delete json[key]; 
         });
         const response = await fetch(url, {
-            method: 'PATCH',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(json)
         });
@@ -53,7 +53,7 @@ if (values) {
     html.push(`<input type="submit" value="Submit">`)
     html.push("</form>");
     form_div.innerHTML = html.join("");
-    await patch(values[0], tablename);
+    await post(values[0], tablename);
     localStorage.removeItem("values");
     localStorage.removeItem("tablename");
     localStorage.removeItem("keys");

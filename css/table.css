@@ -115,17 +115,13 @@ a:visited {
     justify-content: center;
 }
 
-#buttons>#home,
-#buttons>#modify,
-#buttons>#delete {
+#buttons>* {
     margin: 10px;
     text-align: center;
     display: table-cell;
 }
 
-#buttons>#home>h1>a,
-#buttons>#modify>h1>#modify-btn,
-#buttons>#delete>h1>#delete-btn {
+#buttons>*>h1>* {
     font: inherit;
     display: inline-block;
     font-size: 22px;

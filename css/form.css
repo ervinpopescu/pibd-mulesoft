@@ -29,7 +29,7 @@ form {
     text-align: center;
 }
 
-form>input, form>label {
+form>* {
     color: #fffa;
     background-color: #1d1d2d;
     margin-top: 0;
