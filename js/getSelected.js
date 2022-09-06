@@ -5,15 +5,18 @@ function GetSelected() {
     var table = document.getElementById("table");
     var th = table.getElementsByTagName("th");
     var chks = table.getElementsByTagName("input");
-    for (var i = 1; i < th.length - 1; i++) {
-        keys.push(th[i].id);
-        headers.push(th[i].textContent);
+    for (var i = 0; i < th.length - 1; i++) {
+        if (!(th[i].id.includes("id"))) {
+            keys.push(th[i].id);
+            headers.push(th[i].textContent);
+        }
     }
     for (var i = 0; i < chks.length; i++) {
         if (chks[i].checked) {
             selected.push(chks[i]);
         }
     }
+
     function getRow(n) {
         var row = n.parentNode.parentNode;
         var cols = row.getElementsByTagName("td");
@@ -28,8 +31,7 @@ function GetSelected() {
     }
     if (selected.length > 1) {
         alert("Error: cannot select more than 1 value to modify");
-    }
-    else if (selected.length == 1) {
+    } else if (selected.length == 1) {
         var values = getRow(selected[0]);
         var path = window.location.pathname;
         var page = path.split("/").pop().split(".")[0];

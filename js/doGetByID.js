@@ -1,6 +1,8 @@
+import config from "../config.js";
+
 export default function doGetByID(id) {
     var json;
-    uri = "http://localhost:8081/api/database/courses/" + id;
+    uri = config["api_url"] + id;
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
@@ -12,7 +14,7 @@ export default function doGetByID(id) {
     //         "title": "PIBD"
     // }`
     xhr.send(null);
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             json = JSON.parse(xhr.responseText);
             //console.log(xhr.responseText);

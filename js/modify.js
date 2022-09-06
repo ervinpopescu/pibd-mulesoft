@@ -1,23 +1,25 @@
+import config from "../config.js";
+
 function isEmpty(obj) {
-    for(var prop in obj) {
-      if(Object.prototype.hasOwnProperty.call(obj, prop)) {
-        return false;
-      }
+    for (var prop in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+            return false;
+        }
     }
-  
+
     return JSON.stringify(obj) === JSON.stringify({});
 }
 
 async function patch(id, tablename) {
-    var url = `http://localhost:8081/api/database/${tablename}/${id}`;
+    var url = `${config["api_url"]}${tablename}/${id}`;
     const thisForm = document.getElementById('myForm');
-    thisForm.addEventListener('submit', async function (e) {
+    thisForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         const formData = new FormData(thisForm).entries();
-        const json =Object.fromEntries(formData);
+        const json = Object.fromEntries(formData);
         Object.keys(json).forEach((key) => {
-            if(json[key] === "")
-                delete json[key]; 
+            if (json[key] === "")
+                delete json[key];
         });
         const response = await fetch(url, {
             method: 'PATCH',
@@ -28,8 +30,8 @@ async function patch(id, tablename) {
         const result = await response.json();
         console.log(result);
         if (!isEmpty(result))
-            window.location.href=`http://localhost:5555/${tablename}.html`;
-        else 
+            window.location.href = `http://localhost:5555/${tablename}.html`;
+        else
             alert("Please insert something into the fields!");
     });
 }
@@ -40,7 +42,7 @@ var keys = JSON.parse(localStorage.getItem("keys"));
 var values = JSON.parse(localStorage.getItem("values"));
 var data = new Object();
 if (values) {
-    keys.forEach(function (element, index) {
+    keys.forEach(function(element, index) {
         data[element] = values[index];
     });
     var form_div = document.getElementById("modify-form");

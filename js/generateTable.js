@@ -8,10 +8,13 @@ export async function generateTable(data, table_selector, headers) {
         html.push("<th id='" + keys[i] + "'>" + headers[i] + "</th>");
     html.push(`<th>Choose</th>`)
     html.push("</tr>");
-    data.forEach(function (item) {
+    data.forEach(function(item) {
         html.push("<tr>");
         for (var key in item) {
-            html.push("<td>" + item[key] + "</td>");
+            if (!(key.includes("date")))
+                html.push("<td>" + item[key] + "</td>");
+            else
+                html.push("<td>" + item[key].slice(0, 10));
         }
         html.push("<td id='checkbox'>" + checkbox + "value=" + "'" + item["id_course"] + "'/>" + "</td>")
         html.push("</tr>");

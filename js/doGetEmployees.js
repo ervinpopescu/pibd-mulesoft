@@ -1,5 +1,4 @@
 import { doGet } from "./doGet.js";
-import { generateTable } from "./generateTable.js";
 
 var keys = [
     "id_employee",
@@ -8,7 +7,8 @@ var keys = [
     "cnp",
     "salary",
     "position",
-    "birth_date"];
+    "birth_date"
+];
 var headers = [
     "ID",
     "First Name",
@@ -17,5 +17,6 @@ var headers = [
     "Salary",
     "Position",
     "Birth date",
-    "Choose"];
-doGet("employees", generateTable, keys, headers);
+    "Choose"
+];
+doGet("employees", keys, headers);
