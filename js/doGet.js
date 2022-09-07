@@ -5,7 +5,7 @@ import {
 
 export function doGet(table, keys_arr, headers) {
     var table_selector = "table_" + table;
-    var uri = config["api_url"] + table;
+    var uri = `${config["api_url"]}/${table}`;
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);

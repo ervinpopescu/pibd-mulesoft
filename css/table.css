@@ -34,19 +34,16 @@ div#error {
 #table_courses>table {
     color: #fffa;
     width: 60%;
-
 }
 
 #table_employees>table {
     color: #fffa;
     width: 80%;
-
 }
 
 #table_enrollments>table {
     color: #fffa;
     width: 60%;
-
 }
 
 table>tbody>tr {
@@ -74,8 +71,6 @@ input[type=checkbox] {
     border-radius: 0.15em;
     transform: translateY(-0.075em);
 }
-
-
 
 input[type=checkbox]::before {
     content: "";

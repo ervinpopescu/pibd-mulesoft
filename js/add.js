@@ -10,8 +10,8 @@ function isEmpty(obj) {
     return JSON.stringify(obj) === JSON.stringify({});
 }
 
-async function post(ftablename) {
-    var url = `${config["api_url"]}${tablename}`;
+async function post(tablename) {
+    var url = `${config["api_url"]}/${tablename}`;
     const thisForm = document.getElementById('myForm');
     thisForm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -29,35 +29,40 @@ async function post(ftablename) {
 
         const result = await response.json();
         console.log(result);
-        if (!isEmpty(result))
-            window.location.href = `http://localhost:5555/${tablename}.html`;
-        else
+        if (!isEmpty(result)) {
+            alert(result.message);
+            window.location.href = `http://${window.location.host}/${tablename}.html`;
+        } else
             alert("Please insert something into the fields!");
     });
 }
 
-var tablename = JSON.parse(localStorage.getItem("tablename"));
-var headers = JSON.parse(localStorage.getItem("headers"));
-var keys = JSON.parse(localStorage.getItem("keys"));
-var values = JSON.parse(localStorage.getItem("values"));
-var data = new Object();
-if (values) {
-    keys.forEach(function(element, index) {
-        data[element] = values[index];
-    });
-    var form_div = document.getElementById("modify-form");
-    var html = [];
-    html.push("<form id='myForm'>");
-    for (var i = 0; i < keys.length; i++) {
-        html.push("<label for='" + keys[i] + "'>" + headers[i] + "</label><br>");
-        html.push("<input type='text' id='" + keys[i] + "' name='" + keys[i] + "'><br>");
-    }
-    html.push(`<input type="submit" value="Submit">`)
-    html.push("</form>");
-    form_div.innerHTML = html.join("");
-    await post(values[0], tablename);
-    localStorage.removeItem("values");
-    localStorage.removeItem("tablename");
-    localStorage.removeItem("keys");
-    localStorage.removeItem("headers");
+const tablename = localStorage.getItem("tablename");
+const headers = JSON.parse(localStorage.getItem("headers"));
+const keys = JSON.parse(localStorage.getItem("keys"));
+const back_div = document.getElementById("back");
+const form_div = document.getElementById("add-form");
+
+var html = [];
+html.push("<h1>")
+html.push("<a href='" + tablename + ".html" + "'>");
+html.push("<img src='images/back.svg' alt='Back' width='18' height='18' /> Back");
+html.push("</a>");
+html.push("</h1>");
+back_div.innerHTML = html.join("");
+
+html = [];
+html.push("<form id='myForm'>");
+for (var i = 0; i < keys.length; i++) {
+    html.push("<label for='" + keys[i] + "'>" + headers[i] + "</label><br>");
+    html.push("<input type='text' id='" + keys[i] + "' name='" + keys[i] + "'><br>");
 }
+html.push(`<input type="submit" value="Submit">`)
+html.push("</form>");
+form_div.innerHTML = html.join("");
+const result = await post(tablename);
+console.log(result);
+localStorage.removeItem("values");
+localStorage.removeItem("tablename");
+localStorage.removeItem("keys");
+localStorage.removeItem("headers");

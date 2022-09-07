@@ -51,13 +51,15 @@ a:visited {
     justify-content: center;
 }
 
-#home {
+#home,
+#back {
     margin: 10px;
     text-align: center;
     display: table-cell;
 }
 
-#home>h1>a {
+#home>h1>a,
+#back>h1>a {
     font: inherit;
     display: inline-block;
     font-size: 22px;

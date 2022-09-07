@@ -11,12 +11,14 @@
     <main>
         <div id="table_enrollments"></div>
         <script type="module" src="js/doGetEnrollments.js"></script>
-        <script src="js/getSelected.js"></script>
+        <script src="js/Post.js"></script>
+        <script src="js/getSelectedPatch.js"></script>
+        <script src="js/getSelectedDelete.js"></script>
         <br><br>
         <div id="buttons">
             <div id="add">
                 <h1>
-                    <button id="add-btn" type="button" onclick="GetSelected()">
+                    <button id="add-btn" type="button" onclick="preparePost()">
                         <a href="add.html">
                             <img src="images/plus.svg" alt="" width="18"> Add
                         </a>
@@ -25,7 +27,7 @@
             </div>
             <div id="modify">
                 <h1>
-                    <button id="modify-btn" type="button" onclick="GetSelected()">
+                    <button id="modify-btn" type="button" onclick="getSelectedPatch()">
                         <a href="modify.html">
                             <img src="images/cog.svg" alt="" width="18"> Modify
                         </a>
@@ -34,7 +36,7 @@
             </div>
             <div id="delete">
                 <h1>
-                    <button id="delete-btn" type="button" onclick="GetSelected()">
+                    <button id="delete-btn" type="button" onclick="getSelectedDelete()">
                         <a href="delete.html">
                             <img src="images/trashcan.svg" alt="" width="18">
                             Delete
