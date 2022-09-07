@@ -10,8 +10,6 @@
 <body>
     <main>
         <div id="table_courses"></div>
-        <script type="module" src="config.js"></script>
-        <script type="module" src="js/doGet.js"></script>
         <script type="module" src="js/getCourses.js"></script>
         <script type="module" src="js/preparePost.js"></script>
         <script src="js/getSelectedPatch.js"></script>
@@ -21,23 +19,21 @@
             <div id="add">
                 <h1>
                     <button id="add-btn" type="button" onclick="preparePost()">
-                        <!-- <a href="add.html"> -->
-                            <img src="images/plus.svg" alt="" width="18"> Add
-                        <!-- </a> -->
+                        <img src="images/plus.svg" alt="" width="18"> Add
                     </button>
                 </h1>
             </div>
             <div id="modify">
                 <h1>
                     <button id="modify-btn" type="button" onclick="getSelectedPatch()">
-                            <img src="images/cog.svg" alt="" width="18"> Modify
+                        <img src="images/cog.svg" alt="" width="18"> Modify
                     </button>
                 </h1>
             </div>
             <div id="delete">
                 <h1>
                     <button id="delete-btn" type="button" onclick="getSelectedDelete()">
-                            <img src="images/trashcan.svg" alt="" width="18"> Delete
+                        <img src="images/trashcan.svg" alt="" width="18"> Delete
                     </button>
                 </h1>
             </div>
