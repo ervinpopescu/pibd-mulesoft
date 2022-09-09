@@ -7,6 +7,13 @@ function preparePost() {
     const headers = config[page + "_headers"];
     keys.shift();
     headers.shift()
+    if (document.getElementById("empty_error")) {
+        alert("Table is empty, not modifying anything");
+        return;
+    } else if (document.getElementById("database_error")) {
+        alert("Error contacting database");
+        return;
+    }
     localStorage.setItem("tablename", page);
     localStorage.setItem("headers", JSON.stringify(headers));
     localStorage.setItem("keys", JSON.stringify(keys));

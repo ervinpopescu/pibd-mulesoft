@@ -24,5 +24,9 @@ function getSelectedDelete() {
             localStorage.setItem("id", JSON.stringify(getId(selected[0])));
             window.location.href = "delete.html";
         }
-    } else alert("Table is empty, not deleting anything");
+    } else if (document.getElementById("empty_error")) {
+        alert("Table is empty, not modifying anything");
+    } else if (document.getElementById("database_error")) {
+        alert("Error contacting database");
+    }
 }

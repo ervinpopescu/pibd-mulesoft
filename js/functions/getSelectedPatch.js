@@ -2,10 +2,10 @@ function getSelectedPatch() {
     var selected = new Array();
     var keys = new Array();
     var headers = new Array();
+    const path = window.location.pathname;
+    var page = path.split("/").pop().split(".")[0];
     const table = document.getElementById("table");
     if (table) {
-        const path = window.location.pathname;
-        var page = path.split("/").pop().split(".")[0];
         var th = table.getElementsByTagName("th");
         var chks = table.getElementsByTagName("input");
         for (var i = 0; i < th.length - 1; i++) {
@@ -42,5 +42,9 @@ function getSelectedPatch() {
             localStorage.setItem("values", JSON.stringify(values));
         }
         window.location.href = "modify.html";
-    } else alert("Table is empty, not modifying anything");
+    } else if (document.getElementById("empty_error")) {
+        alert("Table is empty, not modifying anything");
+    } else if (document.getElementById("database_error")) {
+        alert("Error contacting database");
+    }
 }

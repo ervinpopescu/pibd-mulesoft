@@ -28,11 +28,11 @@ export function doGet(table, keys_arr, headers) {
                     });
                     generateTable(data, table_selector, headers);
                 } else {
-                    var divopen = `<div id="error">`;
+                    var divopen = `<div id="empty_error">`;
                     document.getElementById(table_selector).innerHTML = divopen + "Table is empty" + "</div>";
                 }
             } catch {
-                var divopen = `<div id="error">`;
+                var divopen = `<div id="database_error">`;
                 document.getElementById(table_selector).innerHTML = divopen + "Error contacting database" + "</div>";
             }
         }

@@ -25,7 +25,8 @@ main.animated {
     transition: opacity 2s ease-in-out, filter 2s ease-in-out;
 }
 
-div#error {
+#empty_error,
+#database_error {
     color: red;
     text-align: center;
     font-size: 35px;
