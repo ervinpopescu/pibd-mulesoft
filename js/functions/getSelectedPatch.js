@@ -35,13 +35,18 @@ function getSelectedPatch() {
         localStorage.setItem("tablename", JSON.stringify(page));
         if (selected.length > 1) {
             alert("Error: cannot select more than 1 value to modify");
+            return;
         } else if (selected.length == 1) {
             var values = getRow(selected[0]);
             localStorage.setItem("headers", JSON.stringify(headers));
             localStorage.setItem("keys", JSON.stringify(keys));
             localStorage.setItem("values", JSON.stringify(values));
+            window.location.href = "modify.html";
         }
-        window.location.href = "modify.html";
+        else if (selected.length == 0) {
+            alert("Error: please select something");
+            return;
+        }
     } else if (document.getElementById("empty_error")) {
         alert("Table is empty, not modifying anything");
     } else if (document.getElementById("database_error")) {

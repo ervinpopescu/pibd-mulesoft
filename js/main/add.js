@@ -28,7 +28,7 @@ async function post(tablename) {
         });
 
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         if (!isEmpty(result)) {
             alert(result.message);
             window.location.href = `http://${window.location.host}/${tablename}.html`;
@@ -61,7 +61,7 @@ html.push(`<input type="submit" value="Submit">`)
 html.push("</form>");
 form_div.innerHTML = html.join("");
 const result = await post(tablename);
-console.log(result);
+// console.log(result);
 localStorage.removeItem("values");
 localStorage.removeItem("tablename");
 localStorage.removeItem("keys");

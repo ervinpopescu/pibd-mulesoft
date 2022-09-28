@@ -32,6 +32,12 @@ main.animated {
     font-size: 35px;
 }
 
+table {
+    border-collapse: collapse;
+    border: 6px solid #ddd;
+    border-style: double;
+}
+
 #table_courses>table {
     color: #fffa;
     width: 60%;
@@ -53,6 +59,12 @@ table>tbody>tr {
 
 table>tbody>tr>td {
     text-align: center;
+}
+
+tr,
+th,
+td {
+    border: 3px solid #ddd;
 }
 
 input[type=checkbox] {

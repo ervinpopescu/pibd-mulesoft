@@ -20,7 +20,7 @@ async function del(id, tablename) {
         body: JSON.stringify(json)
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     if (!isEmpty(result)) {
         alert(result.message);
         window.location.href = `http://${window.location.host}/${tablename}.html`;

@@ -1,16 +1,13 @@
 import config from "../config.js";
 
 function preparePost() {
-    const path = window.location.pathname;
+    var path = window.location.pathname;
     var page = path.split("/").pop().split(".")[0];
-    const keys = config[page + "_keys"];
-    const headers = config[page + "_headers"];
+    var keys = config[page + "_keys"];
+    var headers = config[page + "_headers"];
     keys.shift();
     headers.shift()
-    if (document.getElementById("empty_error")) {
-        alert("Table is empty, not modifying anything");
-        return;
-    } else if (document.getElementById("database_error")) {
+    if (document.getElementById("database_error")) {
         alert("Error contacting database");
         return;
     }

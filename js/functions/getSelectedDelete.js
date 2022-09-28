@@ -20,9 +20,14 @@ function getSelectedDelete() {
         localStorage.setItem("tablename", JSON.stringify(page));
         if (selected.length > 1) {
             alert("Error: cannot select more than 1 value to delete");
-        } else if (selected.length == 1) {
+        }
+        else if (selected.length == 1) {
             localStorage.setItem("id", JSON.stringify(getId(selected[0])));
             window.location.href = "delete.html";
+        }
+        else if (selected.length == 0) {
+            alert("Error: please select something");
+            return;
         }
     } else if (document.getElementById("empty_error")) {
         alert("Table is empty, not modifying anything");

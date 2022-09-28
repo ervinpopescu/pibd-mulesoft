@@ -14,7 +14,7 @@ async function patch(id, tablename) {
     var url = `${config["api_url"]}/${tablename}/${id}`;
     // console.log(url);
     const thisForm = document.getElementById('myForm');
-    thisForm.addEventListener('submit', async function(e) {
+    thisForm.addEventListener('submit', async function (e) {
         e.preventDefault();
         const formData = new FormData(thisForm).entries();
         const json = Object.fromEntries(formData);
@@ -29,7 +29,7 @@ async function patch(id, tablename) {
         });
 
         const result = await response.json();
-        console.log(result);
+        // console.log(result);
         if (!isEmpty(result)) {
             alert(result.message);
             window.location.href = `http://${window.location.host}/${tablename}.html`;
@@ -42,10 +42,6 @@ const tablename = JSON.parse(localStorage.getItem("tablename"));
 const headers = JSON.parse(localStorage.getItem("headers"));
 const keys = JSON.parse(localStorage.getItem("keys"));
 const values = JSON.parse(localStorage.getItem("values"));
-// console.log("table: " + tablename);
-// console.log("headers: " + headers);
-// console.log("keys: " + keys);
-// console.log("values: " + values);
 const back_div = document.getElementById("back");
 var data = new Object();
 var html = [];
@@ -56,7 +52,7 @@ html.push("</a>");
 html.push("</h1>");
 back_div.innerHTML = html.join("");
 if (values) {
-    keys.forEach(function(element, index) {
+    keys.forEach(function (element, index) {
         data[element] = values[index + 1];
     });
     // console.log("data: " + JSON.stringify(data));
